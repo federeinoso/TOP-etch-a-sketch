@@ -8,10 +8,10 @@ function makeGrid(size) {
     let div = document.createElement("div");
     container.style.setProperty(
       "grid-template-columns",
-      `repeat(${number}, 50px)`
+      `repeat(${number}, 1fr)`
     );
     div.classList.add("divGrid");
-    div.addEventListener("mousedown", function () {
+    div.addEventListener("mouseenter", function () {
       div.style.backgroundColor = "black";
     });
     container.appendChild(div);
@@ -19,27 +19,28 @@ function makeGrid(size) {
 }
 
 window.onload = () => {
-  makeGrid(6);
+  makeGrid(16);
 };
 
 // RESET FUNCTION
 
 function reset() {
   container.innerHTML = "";
-  makeGrid(6);
+  slider.value = 16;
+  makeGrid(16);
 }
 
 let btnReset = document.getElementById("btnReset");
 btnReset.addEventListener("click", reset);
 
-//INPUT
-let input = document.querySelector("input");
-let gridNumber;
-input.addEventListener("keyup", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    gridNumber = input.value;
-    container.innerHTML = "";
-    makeGrid(gridNumber);
-  }
-});
+//GRID SIZE
+
+let slider = document.getElementById("sizeRange");
+
+function gridSize() {
+  let gridPixels = container.querySelectorAll("div");
+  gridPixels.forEach((gridPixel) => gridPixel.remove());
+  makeGrid(slider.value);
+}
+
+slider.addEventListener("mouseup", gridSize);

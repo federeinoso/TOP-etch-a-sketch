@@ -12,15 +12,18 @@
     <title>etch a sketch</title>
   </head>
   <body>
-    <div id="'title">
-      <h5 id="title1">________paint de grid, make art</h5>
-      <h1 id="title2">etch a sketch</h1>
-    </div>
     <div id="flex">
-      <div id="container"></div>
+      <div id="left">
+        <div id="title">
+          <h5 id="title1">________paint de grid, make art</h5>
+          <h1 id="title2">etch a sketch</h1>
+        </div>
+        <div id="container-wrapper"><div id="container"></div></div>
+      </div>
       <div id="settings">
-        <button id="btnReset"><h3>reset</h3></button>
-        <input placeholder="grid square size" type="number" min="3" max="64" />
+        <button id="btnReset"><h3>reset grid</h3></button>
+        <p id="sText1">choose grid size</p>
+        <input type="range" value="16" min="4" max="100" id="sizeRange" />
       </div>
     </div>
   </body>
